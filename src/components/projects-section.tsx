@@ -2,7 +2,7 @@
 import { motion } from "framer-motion"
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card"
 import { ExternalLink, Github } from "lucide-react"
-import { projects, IProject } from "@/lib/Constants"
+import { projects } from "@/lib/Constants"
 
 export default function ProjectsSection() {
   // const projects = [

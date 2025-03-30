@@ -3,6 +3,14 @@ import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { AnimatePresence, motion } from "framer-motion"
 
+interface Particle {
+  id: number
+  x: number
+  y: number
+  size: number
+  duration: number
+}
+
 export const SparklesCore = ({
   id,
   className,
@@ -22,7 +30,7 @@ export const SparklesCore = ({
   particleColor?: string
   particleOpacity?: number
 }) => {
-  const [particles, setParticles] = useState<Array<any>>([])
+  const [particles, setParticles] = useState<Particle[]>([])
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
