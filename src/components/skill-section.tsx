@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import { skills } from "@/lib/Constants";
+import Image from "next/image";
 
 export default function SkillsSection() {
 
@@ -26,7 +27,7 @@ export default function SkillsSection() {
           {
             Object.entries(skills).map(([key, value]) => (
               <div key={key} className="flex items-center justify-center px-4 py-2 mx-2 bg-gray-800 rounded-full">
-                <img src={value} alt={key} className="w-12 h-12" />
+                <Image width={48} height={48} src={value} alt={key} />
               </div>
             ))
           }

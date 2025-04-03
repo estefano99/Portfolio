@@ -27,7 +27,7 @@ export const FloatingNav = ({
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
     if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
+      const direction = current! - scrollYProgress.getPrevious()!;
 
       if (scrollYProgress.get() < 0.05) {
         setVisible(false);
@@ -43,12 +43,12 @@ export const FloatingNav = ({
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
     e.preventDefault();
-    
+
     // Solo aplicar scroll suave si es un enlace interno (comienza con #)
     if (link.startsWith('#')) {
       const targetId = link.substring(1);
       const targetElement = document.getElementById(targetId);
-      
+
       if (targetElement) {
         window.scrollTo({
           top: targetElement.offsetTop,
@@ -81,6 +81,7 @@ export const FloatingNav = ({
           className
         )}
       >
+         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}

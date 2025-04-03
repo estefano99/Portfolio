@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Todos los campos son requeridos' }, { status: 400 });
   }
 
-  const { data, error } = await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: 'Mi Portfolio <onboarding@resend.dev>',
     to: ['estefanobugari@gmail.com'],
     subject: `Nuevo mensaje de ${name}`,

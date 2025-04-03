@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { BackgroundGradient } from "./ui/background-gradient";
 import Link from "next/link";
 import { useState } from "react";
@@ -181,9 +181,10 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/80 transition-all cursor-pointer"
                 >
-                  Enviar Mensaje
+                  {isSubmitting ? "Cargando" : "Enviar Mensaje"}
                 </button>
               </form>
             </BackgroundGradient>

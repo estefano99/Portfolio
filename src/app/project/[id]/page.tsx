@@ -1,8 +1,7 @@
 import { Carousel } from "@/components/ui/carousel"
-import { projects, skills } from "@/lib/Constants"
+import { projects } from "@/lib/Constants"
 import { redirect } from "next/navigation"
 import { CardSpotlight } from "@/components/ui/card-spotlight";
-import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 

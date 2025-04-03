@@ -140,16 +140,14 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
         }
         void main() {
             vec2 st = fragCoord.xy;
-            ${
-              center.includes("x")
-                ? "st.x -= abs(floor((mod(u_resolution.x, u_total_size) - u_dot_size) * 0.5));"
-                : ""
-            }
-            ${
-              center.includes("y")
-                ? "st.y -= abs(floor((mod(u_resolution.y, u_total_size) - u_dot_size) * 0.5));"
-                : ""
-            }
+            ${center.includes("x")
+          ? "st.x -= abs(floor((mod(u_resolution.x, u_total_size) - u_dot_size) * 0.5));"
+          : ""
+        }
+            ${center.includes("y")
+          ? "st.y -= abs(floor((mod(u_resolution.y, u_total_size) - u_dot_size) * 0.5));"
+          : ""
+        }
       float opacity = step(0.0, st.x);
       opacity *= step(0.0, st.y);
 
@@ -192,6 +190,7 @@ const ShaderMaterial = ({
   uniforms: Uniforms;
 }) => {
   const { size } = useThree();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<THREE.Mesh>('' as any);
   let lastFrameTime = 0;
 
@@ -209,9 +208,11 @@ const ShaderMaterial = ({
   });
 
   const getUniforms = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const preparedUniforms: any = {};
 
     for (const uniformName in uniforms) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const uniform: any = uniforms[uniformName];
 
       switch (uniform.type) {
