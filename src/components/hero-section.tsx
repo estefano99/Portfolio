@@ -3,6 +3,8 @@ import { motion } from "framer-motion"
 import { TypewriterEffect } from "./ui/typewriter-effect"
 import { BackgroundBeams } from "./ui/background-beams"
 import Image from "next/image"
+import { Github, Linkedin, Mail } from "lucide-react"
+import Link from "next/link"
 
 export default function HeroSection() {
   const words = [
@@ -24,9 +26,8 @@ export default function HeroSection() {
     },
   ]
 
-
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden" id="hero">
       <BackgroundBeams className="absolute inset-0 z-0" />
 
       <div className="container mx-auto px-4 z-10 flex flex-col md:flex-row items-center justify-center gap-8 max-w-8xl ">
@@ -43,15 +44,26 @@ export default function HeroSection() {
             <TypewriterEffect words={words} />
           </div>
           <p className="text-lg text-gray-400 mt-4">
-            Full Stack Developer y Analista en Sistemas, especializado en crear soluciones eficientes y escalables para aplicaciones web modernas.
+            Full Stack Developer y Analista en Sistemas, creo soluciones eficientes y escalables para aplicaciones web modernas.
           </p>
-          <div className="flex gap-4 mt-8">
+          <div className="flex items-center gap-4 mt-8">
             <button className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/80 transition-all cursor-pointer">
-              Contactame
-            </button>
-            <button className="px-6 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-all cursor-pointer">
               Descargar CV
             </button>
+            <div className="flex gap-4">
+              <Link href="https://github.com/estefano99" target="_blank" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary/20 transition-all">
+                <Github className="w-8 h-8" />
+              </Link>
+              <Link href="https://www.linkedin.com/in/estefano-bugari-a03868237" target="_blank" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary/20 transition-all">
+                <Linkedin className="w-8 h-8" />
+              </Link>
+              <Link
+                href="mailto:estefanobugari@gmail.com"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary/20 transition-all"
+              >
+                <Mail className="w-8 h-8" />
+              </Link>
+            </div>
           </div>
         </motion.div>
 

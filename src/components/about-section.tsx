@@ -4,7 +4,7 @@ import { SparklesCore } from "./ui/sparkles"
 
 export default function AboutSection() {
   return (
-    <section className="relative py-20 overflow-hidden bg-black">
+    <section className="relative py-20 overflow-hidden bg-black" id="about-me">
       <div className="absolute inset-0 z-0">
         <SparklesCore
           id="tsparticlesfullpage"
@@ -25,7 +25,7 @@ export default function AboutSection() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mi</h2>
           <div className="h-1 w-20 bg-primary mx-auto mb-8"></div>
         </motion.div>
 
