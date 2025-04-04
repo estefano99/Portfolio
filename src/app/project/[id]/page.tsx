@@ -11,8 +11,11 @@ interface PageProps {
   };
 }
 
-const Page = async ({ params }: PageProps) => {
-  const project = projects.find(project => project.id === Number(params?.id))
+const Page = async ({ params }: {
+  params: Promise<{ id: string }>
+}) => {
+  const { id } = await params;
+  const project = projects.find(project => project.id === Number(id))
 
   if (!project) {
     redirect("/")
@@ -61,11 +64,11 @@ const Page = async ({ params }: PageProps) => {
         <div className="flex justify-center items-center flex-wrap gap-2 mt-4">
           {project.tags.map(tag => (
             <div key={tag} className="flex items-center justify-center px-4 py-2 mx-2 bg-gray-800 rounded-full">
-                <p className="text-md text-primary px-3 py-1">{tag}</p>
+              <p className="text-md text-primary px-3 py-1">{tag}</p>
             </div>
           ))}
         </div>
-        
+
       </section>
     </div>
   )
