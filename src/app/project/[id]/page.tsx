@@ -5,12 +5,6 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
 const Page = async ({ params }: {
   params: Promise<{ id: string }>
 }) => {
