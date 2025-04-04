@@ -4,6 +4,11 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
+interface UniformValue {
+  value: number | number[] | number[][] | THREE.Vector2 | THREE.Vector3 | THREE.Vector3[];
+  type?: string;
+}
+
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
@@ -190,8 +195,7 @@ const ShaderMaterial = ({
   uniforms: Uniforms;
 }) => {
   const { size } = useThree();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ref = useRef<THREE.Mesh>('' as any);
+  const ref = useRef<THREE.Mesh>(null);
   let lastFrameTime = 0;
 
   useFrame(({ clock }) => {
@@ -202,15 +206,13 @@ const ShaderMaterial = ({
     }
     lastFrameTime = timestamp;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const material: any = ref.current.material;
+    const material = ref.current.material as THREE.ShaderMaterial;
     const timeLocation = material.uniforms.u_time;
     timeLocation.value = timestamp;
   });
 
   const getUniforms = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const preparedUniforms: any = {};
+    const preparedUniforms: Record<string, UniformValue> = {};
 
     for (const uniformName in uniforms) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -284,8 +286,7 @@ const ShaderMaterial = ({
   }, [size.width, size.height, source]);
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <mesh ref={ref as any}>
+    <mesh ref={ref}>
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>
