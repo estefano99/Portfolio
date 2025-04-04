@@ -47,9 +47,9 @@ export default function HeroSection() {
             Full Stack Developer y Analista en Sistemas, creo soluciones eficientes y escalables para aplicaciones web modernas.
           </p>
           <div className="flex items-center gap-4 mt-8">
-            <button className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/80 transition-all cursor-pointer">
+            <a download href="/Curriculum.pdf" className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/80 transition-all cursor-pointer">
               Descargar CV
-            </button>
+            </a>
             <div className="flex gap-4">
               <Link href="https://github.com/estefano99" target="_blank" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary/20 transition-all">
                 <Github className="w-8 h-8" />
