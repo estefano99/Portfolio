@@ -5,13 +5,13 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-type Props = {
+interface PageProps {
   params: {
-    id: string
-  }
+    id: string;
+  };
 }
 
-const page = async ({ params }: Props) => {
+const Page = async ({ params }: PageProps) => {
   const project = projects.find(project => project.id === Number(params?.id))
 
   if (!project) {
@@ -100,4 +100,4 @@ const CheckIcon = () => {
   );
 };
 
-export default page
+export default Page
